@@ -1,6 +1,5 @@
 # Game Master's Helper - GMH
 
-
 Game Masters's Helper is an application for RPG Game Master to help them managing an RPG session.
 
 Planned features:
@@ -8,6 +7,7 @@ Planned features:
  - Roll dicer
  - Name generator
 
+## Technology stack:
 - Front End:  
     - Angular
     - RxJs
