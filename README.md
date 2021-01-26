@@ -7,6 +7,7 @@ Planned features:
  - Roll dicer
  - Name generator
 
+Info: For the first implementation there is no backend planned. This will be decided later (agile approach ;) ). Storage will be simulated by browser local storage.
 ## Technology stack:
 - Front End:  
     - Angular
