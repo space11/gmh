@@ -69,11 +69,12 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "gmh:build"
+            "browserTarget": "gmh:build",
+            "port": 5000
           },
           "configurations": {
             "production": {
-              "browserTarget": "gmh:build:production"
+              "browserTarget": "gmh:build:production",              
             }
           }
         },

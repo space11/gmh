@@ -19,4 +19,4 @@ Info: For the first implementation there is no backend planned. This will be dec
 
 ## Development server
 
-- Frontend: Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Frontend: Run `npm start` for a dev server. Navigate to `http://localhost:5000/`. The app will automatically reload if you change any of the source files.
