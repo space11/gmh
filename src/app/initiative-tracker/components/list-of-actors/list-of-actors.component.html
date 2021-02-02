@@ -1,0 +1,32 @@
+<div class="">
+  <table mat-table [dataSource]="dataSource" class="full-width-table" matSort aria-label="Actors">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef >Imię</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="initiative">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Inicjatywa</th>
+      <td mat-cell *matCellDef="let row">{{row.initiative}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="wounds">
+      <th mat-header-cell *matHeaderCellDef >Rany</th>
+      <td mat-cell *matCellDef="let row">{{row.wounds}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="advantages">
+      <th mat-header-cell *matHeaderCellDef >Przewagi</th>
+      <td mat-cell *matCellDef="let row">{{row.advantages}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="usedLuckPoints">
+      <th mat-header-cell *matHeaderCellDef >Wydane szczęście</th>
+      <td mat-cell *matCellDef="let row">{{row.usedLuckPoints}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
