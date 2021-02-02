@@ -1,0 +1,56 @@
+<mat-card class="initiative-tracker-card">
+    <mat-card-header>
+        <mat-card-title>Dodaj Aktora</mat-card-title>
+    </mat-card-header>
+    <form (ngSubmit)="onSubmit()"
+          [formGroup]="form">
+        <mat-card-content>
+            <mat-form-field class="form--field">
+                <mat-label>Imię* </mat-label>
+                <input matInput
+                       formControlName="name"
+                       type="text">
+            </mat-form-field>
+
+            <mat-form-field class="form--field">
+                <mat-label>Inicjatywa* </mat-label>
+                <input matInput
+                       formControlName="initiative"
+                       type="number">
+            </mat-form-field>
+
+            <mat-form-field class="form--field">
+                <mat-label>Rany</mat-label>
+                <input matInput
+                       formControlName="wounds"
+                       type="number">
+            </mat-form-field>
+
+            <mat-form-field class="form--field">
+                <mat-label>Przewagi </mat-label>
+                <input matInput
+                       formControlName="advantages"
+                       type="number">
+            </mat-form-field>
+            <mat-form-field class="form--field">
+                <mat-label>Wydane Szczęście </mat-label>
+                <input matInput
+                       formControlName="usedLuckPoints"
+                       type="number">
+
+            </mat-form-field>
+            <div>
+                <span class="mat-caption">* Wymagane pole</span>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button
+                    color="primary"
+                    type="submit"
+                    [disabled]="form.invalid">
+                <mat-icon>save</mat-icon>Zapisz
+            </button>
+        </mat-card-actions>
+    </form>
+
+</mat-card>
