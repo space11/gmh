@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InitiativeTrackerComponent } from './initiative-tracker.component';
+import { InitiativeTrackerComponent } from './page/initiative-tracker.component';
 
 const routes: Routes = [{ path: '', component: InitiativeTrackerComponent }];
 
