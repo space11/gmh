@@ -12,11 +12,14 @@ export interface ActorbaseModel {
     baseLuckPoints?: number;
 
     /** Luck point uses by actor */
-    luckPointsSpent: number;
+    usedLuckPoints: number;
 
     /** Wounds */
     wounds: number;
 
     /** Base wounds */
     baseWounds?: number;
+
+    /** Advantages */
+    advantages: number;
 }
