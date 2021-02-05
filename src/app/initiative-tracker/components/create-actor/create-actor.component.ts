@@ -1,5 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { InitiativeTrackerFacadeService } from '../../initiative-tracker-facade.service';
 
 @Component({
   selector: 'app-create-actor',
@@ -15,17 +16,23 @@ export class CreateActorComponent implements OnInit {
     wounds: [0],
     advantages: [0],
     usedLuckPoints: [0]
+  });
 
-  })
-
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private initiativeTrackerFacade: InitiativeTrackerFacadeService) { }
 
   ngOnInit(): void {
-    
+
   }
 
-  onSubmit(){
-    
-  }
+  onSubmit() {
+    if (this.form.invalid) {
+      return;
+    }
 
+    this.initiativeTrackerFacade.createActor(this.form.getRawValue());
+
+    this.form.reset();
+    // TODO: Fix validation error shown in UI    
+  }
 }
