@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTable } from '@angular/material/table';
 import { Actor } from 'src/app/models/actor.model';
-import { EXAMPLE_DATA, ListOfActorsDataSource } from './list-of-actors-datasource';
+import { InitiativeTrackerFacadeService } from '../../initiative-tracker-facade.service';
+import { ActorsDataSource } from './actors-datasource';
 
 @Component({
   selector: 'app-list-of-actors',
@@ -10,17 +11,25 @@ import { EXAMPLE_DATA, ListOfActorsDataSource } from './list-of-actors-datasourc
   styleUrls: ['./list-of-actors.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListOfActorsComponent implements AfterViewInit, OnInit {
+export class ListOfActorsComponent implements AfterViewInit, OnInit, OnChanges {
 
-  @ViewChild(MatSort) sort?: MatSort;
-  
-  dataSource = new MatTableDataSource(EXAMPLE_DATA)
+  @Input() data: Actor[] = [];
+  @Input() loading: boolean = false;
+
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatTable) table: MatTable<Actor>;
+
+  dataSource: ActorsDataSource;
 
   /**
    *
    */
-  constructor() {
+  constructor(private initiativeTrackerFacade: InitiativeTrackerFacadeService) {
+   
   }
+
+
+
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
     'name',
@@ -30,13 +39,20 @@ export class ListOfActorsComponent implements AfterViewInit, OnInit {
     'usedLuckPoints',
   ];
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges) {
+    this.dataSource = new ActorsDataSource(this.data);
+    this.dataSource.data = this.data;
+    this.dataSource.sort = this.sort;
+   }
 
+  ngOnInit() {
+   
   }
 
   ngAfterViewInit() {
-    if(this.sort) {
-      this.dataSource.sort = this.sort;
-    }
+    this.dataSource = new ActorsDataSource(this.data);
+    this.dataSource.data = this.data;
+    this.dataSource.sort = this.sort;
+    
   }
 }
